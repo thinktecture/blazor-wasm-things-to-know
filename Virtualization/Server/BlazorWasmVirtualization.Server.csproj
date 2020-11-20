@@ -6,12 +6,20 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.0" />
+    <PackageReference Include="Grpc.AspNetCore.Web" Version="2.33.1" />
+    <PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.136" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.0" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\BlazorWasmVirtualization.Client.csproj" />
-    <ProjectReference Include="..\Shared\BlazorWasmVirtualization.Shared.csproj" />
+    <ProjectReference Include="..\Shared\BlazorWasmVirtualization.Shared.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Client\BlazorWasmVirtualization.Client.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
-
 
 </Project>

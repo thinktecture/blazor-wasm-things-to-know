@@ -1,0 +1,56 @@
+﻿@page "/conferences"
+
+@using Grpc.Net.Client
+@using ProtoBuf.Grpc.Client
+
+@using BlazorWasmVirtualization.Shared.DTO
+@using BlazorWasmVirtualization.Shared.Contracts
+
+@inject GrpcChannel _grpc
+
+<h1>Conferences</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        <Virtualize ItemsProvider="LoadConferences" Context="conf">
+            <ItemContent>
+                <tr>
+                    <td>@conf.Title</td>
+                </tr>
+            </ItemContent>
+            <Placeholder>
+                <tr>
+                    <td>
+                        Loading item...
+                    </td>
+                </tr>
+            </Placeholder>
+        </Virtualize>
+    </tbody>
+</table>
+
+@code {
+    private int _totalCount = 100;
+    private IConferencesService _conferencesService;
+
+    protected override void OnInitialized()
+    {
+        _conferencesService = _grpc.CreateGrpcService<IConferencesService>();
+    }
+
+    private async ValueTask<ItemsProviderResult<ConferenceOverview>> LoadConferences(ItemsProviderRequest request)
+    {
+        var numConferences = Math.Min(request.Count, _totalCount - request.StartIndex);
+        var conferences = await _conferencesService.ListConferencesAsync(
+            new QueryParameters { StartIndex = request.StartIndex, PageSize= numConferences });
+
+        _totalCount = conferences.TotalSize;
+
+        return new ItemsProviderResult<ConferenceOverview>(conferences.Items, conferences.TotalSize);
+    }
+}

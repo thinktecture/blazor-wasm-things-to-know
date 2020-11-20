@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.809.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmVirtualization.Server", "Server\BlazorWasmVirtualization.Server.csproj", "{4FB4249D-01E6-4818-A536-69BEBE4525C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmVirtualization.Server", "Server\BlazorWasmVirtualization.Server.csproj", "{80A8A8BC-B3F0-4498-9C77-820820873BA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmVirtualization.Client", "Client\BlazorWasmVirtualization.Client.csproj", "{A6730CF8-D426-4101-BCF4-426FDCAFB6DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmVirtualization.Client", "Client\BlazorWasmVirtualization.Client.csproj", "{CA4B55CE-58F9-4F2C-A752-82468A255232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmVirtualization.Shared", "Shared\BlazorWasmVirtualization.Shared.csproj", "{BB2365C1-0D71-49EB-88DD-8C81C79D071B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWasmVirtualization.Shared", "Shared\BlazorWasmVirtualization.Shared.csproj", "{5A466141-0711-484A-BA94-0D06968B848F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,23 +15,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4FB4249D-01E6-4818-A536-69BEBE4525C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FB4249D-01E6-4818-A536-69BEBE4525C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FB4249D-01E6-4818-A536-69BEBE4525C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FB4249D-01E6-4818-A536-69BEBE4525C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6730CF8-D426-4101-BCF4-426FDCAFB6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6730CF8-D426-4101-BCF4-426FDCAFB6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6730CF8-D426-4101-BCF4-426FDCAFB6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6730CF8-D426-4101-BCF4-426FDCAFB6DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB2365C1-0D71-49EB-88DD-8C81C79D071B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB2365C1-0D71-49EB-88DD-8C81C79D071B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB2365C1-0D71-49EB-88DD-8C81C79D071B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB2365C1-0D71-49EB-88DD-8C81C79D071B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80A8A8BC-B3F0-4498-9C77-820820873BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A8A8BC-B3F0-4498-9C77-820820873BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A8A8BC-B3F0-4498-9C77-820820873BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A8A8BC-B3F0-4498-9C77-820820873BA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA4B55CE-58F9-4F2C-A752-82468A255232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA4B55CE-58F9-4F2C-A752-82468A255232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA4B55CE-58F9-4F2C-A752-82468A255232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA4B55CE-58F9-4F2C-A752-82468A255232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A466141-0711-484A-BA94-0D06968B848F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A466141-0711-484A-BA94-0D06968B848F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A466141-0711-484A-BA94-0D06968B848F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A466141-0711-484A-BA94-0D06968B848F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6149258D-B0C0-4051-B525-E1D1F9345D45}
+		SolutionGuid = {CFD15803-1D43-43E0-8F1E-CA33F1E52DD2}
 	EndGlobalSection
 EndGlobal
