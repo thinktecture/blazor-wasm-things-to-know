@@ -41,6 +41,14 @@ namespace BlazorWasmVirtualization.Server.GrpcServices
             return _mapper.Map<ConferenceDetails>(conferenceDetails);
         }
 
+        public async Task<List<ConferenceOverview>> ListAllConferencesAsync()
+        {
+            var conferences = await _conferencesDbContext.Conferences.ToListAsync();
+            var confs = _mapper.Map<List<ConferenceOverview>>(conferences);
+
+            return confs;
+        }
+
         public async Task<PagedResult<ConferenceOverview>> ListConferencesAsync(QueryParameters queryParameters)
         {
             var totalSize = await _conferencesDbContext.Conferences.CountAsync();

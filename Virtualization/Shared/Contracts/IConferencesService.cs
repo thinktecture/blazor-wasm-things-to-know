@@ -8,6 +8,7 @@ namespace BlazorWasmVirtualization.Shared.Contracts
     [ServiceContract]
     public interface IConferencesService
     {
+        Task<List<ConferenceOverview>> ListAllConferencesAsync(); // ONLY for demo ;-)
         Task<PagedResult<ConferenceOverview>> ListConferencesAsync(QueryParameters queryParameters);
         Task<ConferenceDetails> GetConferenceDetailsAsync(ConferenceDetailsRequest request);
         Task<ConferenceDetails> AddNewConferenceAsync(ConferenceDetails conference);
