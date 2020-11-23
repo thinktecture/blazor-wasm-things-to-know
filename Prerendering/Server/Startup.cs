@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using ProtoBuf.Grpc.Server;
 using BlazorWasmPrerendering.Server.GrpcServices;
 using BlazorWasmPrerendering.Client;
-using System.Diagnostics;
 
 namespace BlazorWasmPrerendering.Server
 {
@@ -25,20 +24,7 @@ namespace BlazorWasmPrerendering.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string baseUrl;
-            var baseUrls = Configuration[WebHostDefaults.ServerUrlsKey];
-
-            if(baseUrls.Contains(";"))
-            {
-                baseUrl = baseUrls.Split(";")[0];
-            }
-            else
-            {
-                baseUrl = baseUrls;
-            }
-
-            Console.WriteLine("### baseUrl: " + baseUrl);
-            ClientStartup.ConfigureServices(services, baseUrl, true);
+            ClientStartup.ConfigureServices(services, GetBaseUrl(), true);
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -81,6 +67,23 @@ namespace BlazorWasmPrerendering.Server
                 endpoints.MapControllers();
                 endpoints.MapFallbackToPage("/_Host");
             });
+        }
+
+        private string GetBaseUrl()
+        {
+            string baseUrl;
+            var baseUrls = Configuration[WebHostDefaults.ServerUrlsKey];
+
+            if (baseUrls.Contains(";"))
+            {
+                baseUrl = baseUrls.Split(";")[0];
+            }
+            else
+            {
+                baseUrl = baseUrls;
+            }
+
+            return baseUrl;
         }
     }
 }
