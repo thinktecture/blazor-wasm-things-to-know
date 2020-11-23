@@ -9,6 +9,8 @@ using BlazorWasmPrerendering.Server.Model;
 using Microsoft.EntityFrameworkCore;
 using ProtoBuf.Grpc.Server;
 using BlazorWasmPrerendering.Server.GrpcServices;
+using BlazorWasmPrerendering.Client;
+using System.Diagnostics;
 
 namespace BlazorWasmPrerendering.Server
 {
@@ -23,6 +25,21 @@ namespace BlazorWasmPrerendering.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
+            string baseUrl;
+            var baseUrls = Configuration[WebHostDefaults.ServerUrlsKey];
+
+            if(baseUrls.Contains(";"))
+            {
+                baseUrl = baseUrls.Split(";")[0];
+            }
+            else
+            {
+                baseUrl = baseUrls;
+            }
+
+            Console.WriteLine("### baseUrl: " + baseUrl);
+            ClientStartup.ConfigureServices(services, baseUrl, true);
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddDbContext<ConferencesDbContext>(

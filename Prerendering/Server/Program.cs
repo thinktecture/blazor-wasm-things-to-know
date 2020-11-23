@@ -22,7 +22,7 @@ namespace BlazorWasmPrerendering.Server
                     .Build())
                 .UseStartup<Startup>()
                 .Build();
-
+            
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
