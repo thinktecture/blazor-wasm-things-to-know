@@ -14,7 +14,6 @@
     <PackageReference Include="Grpc.Net.Client" Version="2.33.1" />
     <PackageReference Include="Grpc.Net.Client.Web" Version="2.33.1" />
     <PackageReference Include="protobuf-net.Grpc" Version="1.0.136" />
-    <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
   </ItemGroup>
 
   <ItemGroup>

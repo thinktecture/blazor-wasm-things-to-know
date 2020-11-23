@@ -62,7 +62,7 @@ namespace BlazorWasmPrerendering.Server
 
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
-                endpoints.MapFallbackToFile("_Host");
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }
