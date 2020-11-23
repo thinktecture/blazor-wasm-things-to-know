@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using ConfTool.Server.Hubs;
@@ -13,7 +14,6 @@ using Microsoft.Extensions.Logging;
 
 namespace ConfTool.Server.Controllers
 {
-    [Authorize("api")]
     [ApiController]
     [Route("api/[controller]")]
     [Produces("application/json")]

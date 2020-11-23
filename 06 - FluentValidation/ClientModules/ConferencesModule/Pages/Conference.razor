@@ -20,24 +20,16 @@
     </div>
     <div class="form-group">
         <label for="city">City</label>
-        <input disabled="@_isShow" type="text" @bind-value="_conferenceDetails.City" class="form-control" id="city" placeholder="Location">
+        <InputText @bind-disabled="@_isShow" @bind-Value="_conferenceDetails.City" class="form-control" id="city" placeholder="City"></InputText>
     </div>
     <div class="form-group">
         <label for="country">Country</label>
         @if (Mode == ConferenceComponentDisplayModes.Show)
         {
-            <input disabled="@_isShow" type="text" @bind-value="_conferenceDetails.Country" class="form-control" id="country" placeholder="Location">
+            <input disabled="@_isShow" type="text" @bind-value="_conferenceDetails.Country" class="form-control" id="country" placeholder="Country">
         }
         else
         {
-            <!--
-            <InputSelect @bind-Value="_conferenceDetails.Country" class="form-control" id="country">
-                @foreach (string country in _countries)
-                    {
-                    <option value="@country">@country</option>
-                    }
-            </InputSelect>
-            -->
             <BlazoredTypeahead SearchMethod="FilterCountries"
                                @bind-Value="_conferenceDetails.Country"
                                EnableDropDown="true">
