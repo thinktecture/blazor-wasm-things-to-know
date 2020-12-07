@@ -1,4 +1,4 @@
-﻿@page "/conferences"
+﻿@page "/conferences-all"
 
 @using Grpc.Net.Client
 @using ProtoBuf.Grpc.Client
@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        <Virtualize ItemsProvider="LoadConferences" Context="conf">
+        <Virtualize Items="@_conferences" Context="conf">
             <ItemContent>
                 <tr>
                     <td>@conf.Title</td>
@@ -35,22 +35,12 @@
 </table>
 
 @code {
-    private int _totalCount = 100;
     private IConferencesService _conferencesService;
+    private List<ConferenceOverview> _conferences = new List<ConferenceOverview>();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         _conferencesService = _grpc.CreateGrpcService<IConferencesService>();
-    }
-
-    private async ValueTask<ItemsProviderResult<ConferenceOverview>> LoadConferences(ItemsProviderRequest request)
-    {
-        var numConferences = Math.Min(request.Count, _totalCount - request.StartIndex);
-        var conferences = await _conferencesService.ListConferencesAsync(
-            new QueryParameters { StartIndex = request.StartIndex, PageSize= numConferences });
-
-        _totalCount = conferences.TotalSize;
-
-        return new ItemsProviderResult<ConferenceOverview>(conferences.Items, conferences.TotalSize);
+        _conferences = await _conferencesService.ListAllConferencesAsync();
     }
 }
