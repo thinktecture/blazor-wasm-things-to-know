@@ -2,17 +2,19 @@
 
 @page "/webcam"
 
-@inject WebcamService _webcam
+@using Microsoft.JSInterop
+
+@implements IAsyncDisposable
 
 <h1>Webcam</h1>
 
 <div class="camera">
-    <video id="@options.VideoID">
+    <video id="@_options.VideoID">
     </video>
 </div>
 
 <div class="output">
-    <img id="@options.PhotoID"
+    <img id="@_options.PhotoID"
          alt="">
 </div>
 
@@ -21,11 +23,16 @@
     <button class="btn btn-primary" @onclick="TakePictureAsync">Take picture</button>
 </div>
 
-<canvas id="@options.CanvasID">
+<canvas id="@_options.CanvasID">
 </canvas>
 
 @code {
-    private WebcamOptions options = new WebcamOptions()
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
+
+    private WebcamService _webcam;
+
+    private WebcamOptions _options = new WebcamOptions()
     {
         CanvasID = "canvas",
         VideoID = "video",
@@ -34,16 +41,25 @@
 
     protected override void OnInitialized()
     {
-        options.Width = 320;
+        _webcam = new WebcamService(JSRuntime);
+        _options.Width = 320;
     }
 
     public async Task StartVideoAsync()
     {
-        await _webcam.StartVideoAsync(options);
+        await _webcam.StartVideoAsync(_options);
     }
 
     public async Task TakePictureAsync()
     {
         await _webcam.TakePictureAsync();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_webcam != null)
+        {
+            await _webcam.DisposeAsync();
+        }
     }
 }

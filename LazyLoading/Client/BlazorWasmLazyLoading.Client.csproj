@@ -19,10 +19,10 @@
   </ItemGroup>
     
   <ItemGroup>
-    <ProjectReference Include="..\BlazorLibs.Webcam\BlazorLibs.Webcam.csproj">
+    <ProjectReference Include="..\Shared\BlazorWasmLazyLoading.Shared.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\Shared\BlazorWasmLazyLoading.Shared.csproj">
+    <ProjectReference Include="..\BlazorLibs.Webcam\BlazorLibs.Webcam.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
