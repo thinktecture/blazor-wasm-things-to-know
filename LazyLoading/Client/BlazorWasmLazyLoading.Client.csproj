@@ -13,12 +13,16 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <ProjectReference Include="..\Shared\BlazorWasmJS.Shared.csproj">
+    <BlazorWebAssemblyLazyLoad Include="BlazorLibs.Webcam.dll" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorLibs.Webcam\BlazorLibs.Webcam.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\BlazorLibs.Webcam\BlazorLibs.Webcam.csproj">
+    <ProjectReference Include="..\Shared\BlazorWasmLazyLoading.Shared.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace BlazorLibs.Webcam
 {
-    public class WebcamService : IWebcamService, IAsyncDisposable
+    public class WebcamService : IAsyncDisposable
     {
         private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 

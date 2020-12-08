@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using BlazorWasmJS.Shared;
+using BlazorWasmLazyLoading.Shared;
 
-namespace BlazorWasmJS.Server.Controllers
+namespace BlazorWasmLazyLoading.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]

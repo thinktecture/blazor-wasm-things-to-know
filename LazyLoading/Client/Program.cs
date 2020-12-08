@@ -3,9 +3,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using BlazorLibs.Webcam;
 
-namespace BlazorWasmJS.Client
+namespace BlazorWasmLazyLoading.Client
 {
     public class Program
     {
@@ -13,8 +12,6 @@ namespace BlazorWasmJS.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
-
-            builder.Services.AddWebcam();
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 

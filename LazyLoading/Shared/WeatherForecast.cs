@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace BlazorWasmJS.Shared
+namespace BlazorWasmLazyLoading.Shared
 {
     public class WeatherForecast
     {
