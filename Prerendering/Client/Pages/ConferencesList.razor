@@ -16,12 +16,12 @@
     }
     else
     {
-        <MudTable Items="_conferences" FixedHeader="true" Hover="true" Elevation="1">
+        <MudTable Items="_conferences" Hover="true" Elevation="3">
             <HeaderContent>
                 <MudTh>Title</MudTh>
             </HeaderContent>
             <RowTemplate>
-                <MudTd DataLabel="Title" >@context.Title</MudTd>
+                <MudTd DataLabel="Title">@context.Title</MudTd>
             </RowTemplate>
         </MudTable>
     }
@@ -30,6 +30,7 @@
 @code {
     private List<ConferenceOverview> _conferences;
     private IConferencesService _conferencesService;
+    private string _searchString;
 
     protected override async Task OnInitializedAsync()
     {
