@@ -24,7 +24,7 @@ namespace BlazorWasmPrerendering.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
-            ClientStartup.ConfigureServices(services, GetBaseUrl(), true);
+            ClientStartup.ConfigureServices(services, true);
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -67,23 +67,6 @@ namespace BlazorWasmPrerendering.Server
                 endpoints.MapControllers();
                 endpoints.MapFallbackToPage("/_Host");
             });
-        }
-
-        private string GetBaseUrl()
-        {
-            string baseUrl;
-            var baseUrls = Configuration[WebHostDefaults.ServerUrlsKey];
-
-            if (baseUrls.Contains(";"))
-            {
-                baseUrl = baseUrls.Split(";")[0];
-            }
-            else
-            {
-                baseUrl = baseUrls;
-            }
-
-            return baseUrl;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace BlazorWasmPrerendering.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-            ClientStartup.ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress, false);
+            ClientStartup.ConfigureServices(builder.Services, false);
 
             await builder.Build().RunAsync();
         }
