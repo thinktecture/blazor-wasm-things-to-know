@@ -8,29 +8,24 @@
 
 @inject GrpcChannel _grpc
 
-<h1>Conferences</h1>
-
-@if (_conferences == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Title</th>
-            </tr>
-        </thead>
-        <tbody>
-            <Virtualize Items="@_conferences" Context="conf">
-                <tr>
-                    <td>@conf.Title</td>
-                </tr>
-            </Virtualize>
-        </tbody>
-    </table>
-}
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
+    <MudText Typo="Typo.h3" GutterBottom="true">Conferences</MudText>
+    @if (_conferences == null)
+    {
+        <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+    }
+    else
+    {
+        <MudTable Items="_conferences" Hover="true" SortLabel="Sort By" Elevation="0">
+            <HeaderContent>
+                <MudTh><MudTableSortLabel SortBy="new Func<ConferenceOverview, object>(x=>x.Title)">Title</MudTableSortLabel></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Date">@context.Title</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+</MudContainer>
 
 @code {
     private List<ConferenceOverview> _conferences;

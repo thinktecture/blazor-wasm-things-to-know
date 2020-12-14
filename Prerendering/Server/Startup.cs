@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using AutoMapper;
+using BlazorWasmPrerendering.Client;
+using BlazorWasmPrerendering.Server.GrpcServices;
+using BlazorWasmPrerendering.Server.Model;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AutoMapper;
-using System;
-using BlazorWasmPrerendering.Server.Model;
-using Microsoft.EntityFrameworkCore;
 using ProtoBuf.Grpc.Server;
-using BlazorWasmPrerendering.Server.GrpcServices;
-using BlazorWasmPrerendering.Client;
 
 namespace BlazorWasmPrerendering.Server
 {

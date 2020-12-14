@@ -10,12 +10,12 @@
 
 @inject GrpcChannel _grpc
 
-<h1>Time from Server</h1>
-
-<p>Current time: @_currentTimeFromServer</p>
-
-<button class="btn btn-primary" @onclick="StartTime" disabled="@(_cts != null)">Start</button>
-<button class="btn btn-primary" @onclick="StopTime" disabled="@(_cts == null)">Stop</button>
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-16">
+    <MudText Typo="Typo.h3" GutterBottom="true">Time from Server</MudText>
+    <MudText Class="mb-4">Current time: @_currentTimeFromServer</MudText>
+    <MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="StartTime" Disabled="(_cts != null)">Start</MudButton>
+    <MudButton Color="Color.Secondary" Variant="Variant.Filled" @onclick="StopTime" Disabled="(_cts == null)">Stop</MudButton>
+</MudContainer>
 
 @code {
     private DateTime _currentTimeFromServer;
