@@ -16,12 +16,12 @@
     }
     else
     {
-        <MudTable Items="_conferences" Hover="true" SortLabel="Sort By" Elevation="0">
+        <MudTable Items="_conferences" FixedHeader="true" Hover="true" Elevation="1">
             <HeaderContent>
-                <MudTh><MudTableSortLabel SortBy="new Func<ConferenceOverview, object>(x=>x.Title)">Title</MudTableSortLabel></MudTh>
+                <MudTh>Title</MudTh>
             </HeaderContent>
             <RowTemplate>
-                <MudTd DataLabel="Date">@context.Title</MudTd>
+                <MudTd DataLabel="Title" >@context.Title</MudTd>
             </RowTemplate>
         </MudTable>
     }

@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider Theme="_myTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -23,6 +23,16 @@
 </MudLayout>
 
 @code {
+    MudTheme _myTheme = new MudTheme()
+    {
+        Palette = new Palette()
+        {
+            AppbarBackground = "#ff584f",
+            Primary = "#ff584f",
+            Secondary = "#3d6fb4"
+        }
+    };
+
     bool _drawerOpen = true;
 
     void DrawerToggle()
