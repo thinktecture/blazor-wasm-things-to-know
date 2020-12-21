@@ -31,7 +31,7 @@ namespace BlazorWasmVideo.Client
         {
             if (_reference != null)
             {
-                await _reference.InvokeVoidAsync("dispose");
+                _reference.InvokeVoid("dispose");
                 await _reference.DisposeAsync();
             }
         }

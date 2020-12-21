@@ -5,14 +5,13 @@
 @inject VideoService _videoService
 
 <MudContainer Class="mt-16">
-    <MudButton Variant="Variant.Filled" class="btn-file">
+    <MudButton Variant="Variant.Filled" Class="btn-file">
         <InputFile OnChange="LoadFile"/>Open File
     </MudButton>
 
-    <br />
-    <br />
-
-    <video  width="600" height="400" autoplay controls src="@_url" />
+    <p class="mt-8">
+        <video width="600" height="400" autoplay controls src="@_url" />
+    </p>
 </MudContainer>
 
 <style>
@@ -39,6 +38,8 @@
 </style>
 
 @code {
+    private const int MAX_SIZE_IN_MB = 100;
+
     private string _url;
     private byte[] _buffer;
 
@@ -51,7 +52,7 @@
     {
         var file = args.GetMultipleFiles()[0];
 
-        using var stream = file.OpenReadStream(100000000); // Max size for file that can be read
+        using var stream = file.OpenReadStream(1024 * 1024 * MAX_SIZE_IN_MB);
         _buffer = new byte[file.Size];
 
         await stream.ReadAsync(_buffer);
