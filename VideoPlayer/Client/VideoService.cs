@@ -6,13 +6,19 @@ namespace BlazorWasmVideo.Client
 {
     public class VideoService : IAsyncDisposable
     {
+        private IJSRuntime _jsRuntime;
         private IJSUnmarshalledObjectReference _reference;
 
-        public async Task InitAsync(IJSRuntime jsRuntime)
+        public VideoService(IJSRuntime jsRuntime)
         {
-            await jsRuntime.InvokeVoidAsync("import", "./video.js");
+            _jsRuntime = jsRuntime;
+        }
 
-            var unmarshalledRuntime = (IJSUnmarshalledRuntime)jsRuntime;
+        public async Task InitAsync()
+        {
+            await _jsRuntime.InvokeVoidAsync("import", "./video.js");
+
+            var unmarshalledRuntime = (IJSUnmarshalledRuntime)_jsRuntime;
             _reference = unmarshalledRuntime.InvokeUnmarshalled<IJSUnmarshalledObjectReference>("videoServiceReference");
         }
 

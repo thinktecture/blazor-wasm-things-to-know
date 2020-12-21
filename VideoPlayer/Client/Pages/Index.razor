@@ -3,17 +3,16 @@
 @using Microsoft.AspNetCore.Components.Forms
 
 @inject VideoService _videoService
-@inject IJSRuntime _jsRuntime
 
 <MudContainer Class="mt-16">
     <MudButton Variant="Variant.Filled" class="btn-file">
-        <InputFile OnChange="LoadFile" />Open File
+        <InputFile OnChange="LoadFile"/>Open File
     </MudButton>
 
     <br />
     <br />
 
-    <video width="600" height="400" autoplay controls src="@_url" />
+    <video  width="600" height="400" autoplay controls src="@_url" />
 </MudContainer>
 
 <style>
@@ -45,7 +44,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await _videoService.InitAsync(_jsRuntime);
+        await _videoService.InitAsync();
     }
 
     private async void LoadFile(InputFileChangeEventArgs args)
