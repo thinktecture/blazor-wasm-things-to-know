@@ -1,0 +1,62 @@
+﻿@page "/"
+
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject IJSRuntime Runtime
+
+<MudContainer>
+    <MudButton Variant="Variant.Filled" class="btn-file">
+        <InputFile OnChange="loadFile" />Open File
+    </MudButton>
+
+    <br />
+    <br />
+
+    <video width="300" height="200" autoplay controls src="@url" />
+</MudContainer>
+
+<style>
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+</style>
+
+@code {
+    string url;
+    byte[] buffer;
+
+    protected override async Task OnInitializedAsync()
+    {
+    }
+
+    private async void loadFile(InputFileChangeEventArgs args)
+    {
+        var file = args.GetMultipleFiles()[0];
+
+        using var stream = file.OpenReadStream(100000000); // Max size for file that can be read
+        buffer = new byte[file.Size];
+
+        await stream.ReadAsync(buffer);
+
+        //url = FFmpegFactory.CreateURLFromBuffer(buffer, "myFile.mp4", file.ContentType);
+
+        StateHasChanged();
+    }
+}
