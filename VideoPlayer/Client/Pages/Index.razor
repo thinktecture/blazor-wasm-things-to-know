@@ -2,17 +2,18 @@
 
 @using Microsoft.AspNetCore.Components.Forms
 
-@inject IJSRuntime Runtime
+@inject VideoService _videoService
+@inject IJSRuntime _jsRuntime
 
-<MudContainer>
+<MudContainer Class="mt-16">
     <MudButton Variant="Variant.Filled" class="btn-file">
-        <InputFile OnChange="loadFile" />Open File
+        <InputFile OnChange="LoadFile" />Open File
     </MudButton>
 
     <br />
     <br />
 
-    <video width="300" height="200" autoplay controls src="@url" />
+    <video width="300" height="200" autoplay controls src="@_url" />
 </MudContainer>
 
 <style>
@@ -39,23 +40,24 @@
 </style>
 
 @code {
-    string url;
-    byte[] buffer;
+    private string _url;
+    private byte[] _buffer;
 
     protected override async Task OnInitializedAsync()
     {
+        await _videoService.InitAsync(_jsRuntime);
     }
 
-    private async void loadFile(InputFileChangeEventArgs args)
+    private async void LoadFile(InputFileChangeEventArgs args)
     {
         var file = args.GetMultipleFiles()[0];
 
         using var stream = file.OpenReadStream(100000000); // Max size for file that can be read
-        buffer = new byte[file.Size];
+        _buffer = new byte[file.Size];
 
-        await stream.ReadAsync(buffer);
+        await stream.ReadAsync(_buffer);
 
-        //url = FFmpegFactory.CreateURLFromBuffer(buffer, "myFile.mp4", file.ContentType);
+        _url = _videoService.CreateURLFromBuffer(_buffer, "tempFile.mp4", file.ContentType);
 
         StateHasChanged();
     }

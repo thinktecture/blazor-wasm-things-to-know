@@ -2,12 +2,14 @@
 using MudBlazor;
 using MudBlazor.Services;
 
-namespace BlazorWasmPrerendering.Client
+namespace BlazorWasmVideo.Client
 {
     public static class ClientStartup
     {
-        public static void ConfigureServices(IServiceCollection services, bool isServer)
+        public static void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<VideoService>();
+
             services.AddMudBlazorDialog();
             services.AddMudBlazorSnackbar();
             services.AddMudBlazorResizeListener();

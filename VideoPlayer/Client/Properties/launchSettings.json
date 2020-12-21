@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "BlazorWasmPrerendering": {
+    "BlazorWasmVideo": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
