@@ -1,4 +1,4 @@
-﻿window.videoServiceReference = () => {
+﻿window.videoServiceUnmarshaledReference = () => {
     return {
         createObjectURL: function (data, name, type) {
             const content = Blazor.platform.toUint8Array(data);

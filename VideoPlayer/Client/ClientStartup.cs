@@ -8,7 +8,8 @@ namespace BlazorWasmVideo.Client
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<VideoService>();
+            services.AddScoped<VideoServiceJSInterop>();
+            services.AddScoped<VideoServiceUnmarshaledJSInterop>();
 
             services.AddMudBlazorDialog();
             services.AddMudBlazorSnackbar();

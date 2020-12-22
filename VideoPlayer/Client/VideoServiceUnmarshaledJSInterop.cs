@@ -4,22 +4,22 @@ using Microsoft.JSInterop;
 
 namespace BlazorWasmVideo.Client
 {
-    public class VideoService : IAsyncDisposable
+    public class VideoServiceUnmarshaledJSInterop : IAsyncDisposable
     {
         private IJSRuntime _jsRuntime;
         private IJSUnmarshalledObjectReference _reference;
 
-        public VideoService(IJSRuntime jsRuntime)
+        public VideoServiceUnmarshaledJSInterop(IJSRuntime jsRuntime)
         {
             _jsRuntime = jsRuntime;
         }
 
         public async Task InitAsync()
         {
-            await _jsRuntime.InvokeVoidAsync("import", "./video.js");
+            await _jsRuntime.InvokeVoidAsync("import", "./videoServiceUnmarshaledJSInterop.js");
 
             var unmarshalledRuntime = (IJSUnmarshalledRuntime)_jsRuntime;
-            _reference = unmarshalledRuntime.InvokeUnmarshalled<IJSUnmarshalledObjectReference>("videoServiceReference");
+            _reference = unmarshalledRuntime.InvokeUnmarshalled<IJSUnmarshalledObjectReference>("videoServiceUnmarshaledReference");
         }
 
         public string CreateURLFromBuffer(byte[] buffer, string name, string type)

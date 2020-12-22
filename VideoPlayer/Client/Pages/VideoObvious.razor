@@ -1,8 +1,7 @@
 ﻿@page "/"
 
+@using System.Diagnostics
 @using Microsoft.AspNetCore.Components.Forms
-
-@inject VideoService _videoService
 
 <MudContainer Class="mt-16">
     <MudButton Variant="Variant.Filled" Class="btn-file">
@@ -41,24 +40,23 @@
     private const int MAX_SIZE_IN_MB = 100;
 
     private string _url;
-    private byte[] _buffer;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await _videoService.InitAsync();
-    }
 
     private async void LoadFile(InputFileChangeEventArgs args)
     {
         var file = args.GetMultipleFiles()[0];
 
+        var sw = Stopwatch.StartNew();
+
         using var stream = file.OpenReadStream(1024 * 1024 * MAX_SIZE_IN_MB);
-        _buffer = new byte[file.Size];
+        var buffer = new byte[file.Size];
 
-        await stream.ReadAsync(_buffer);
+        await stream.ReadAsync(buffer);
 
-        _url = _videoService.CreateURLFromBuffer(_buffer, "tempFile.mp4", file.ContentType);
+        _url = $"data:{file.ContentType};base64,{Convert.ToBase64String(buffer)}";
 
         StateHasChanged();
+
+        sw.Stop();
+        Console.WriteLine("### VideoObvious: {0}", sw.ElapsedMilliseconds);
     }
 }

@@ -1,0 +1,69 @@
+﻿@page "/jsinterop"
+
+@using System.Diagnostics 
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject VideoServiceJSInterop _videoService
+
+<MudContainer Class="mt-16">
+    <MudButton Variant="Variant.Filled" Class="btn-file">
+        <InputFile OnChange="LoadFile"/>Open File
+    </MudButton>
+
+    <p class="mt-8">
+        <video width="600" height="400" autoplay controls src="@_url" />
+    </p>
+</MudContainer>
+
+<style>
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+</style>
+
+@code {
+    private const int MAX_SIZE_IN_MB = 100;
+
+    private string _url;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await _videoService.InitAsync();
+    }
+
+    private async void LoadFile(InputFileChangeEventArgs args)
+    {
+        var file = args.GetMultipleFiles()[0];
+
+        Stopwatch sw = Stopwatch.StartNew();
+
+        using var stream = file.OpenReadStream(1024 * 1024 * MAX_SIZE_IN_MB);
+        var buffer = new byte[file.Size];
+
+        await stream.ReadAsync(buffer);
+
+        _url = await _videoService.CreateURLFromBuffer(buffer, "tempFile.mp4", file.ContentType);
+
+        StateHasChanged();
+
+        sw.Stop();
+        Console.WriteLine("### VideoJSInterop: {0}", sw.ElapsedMilliseconds);
+    }
+}
