@@ -1,13 +1,18 @@
-﻿export function createObjectURL(data, name, type) {
+﻿var videoUrl;
+
+export function createObjectURL(data, name, type) {
     var buffer = base64ToArrayBuffer(data);
     const file = new File([buffer], name, { type: type });
 
     buffer = null;
 
-    return URL.createObjectURL(file);
+    videoUrl = URL.createObjectURL(file);
+
+    return videoUrl;
 };
 
 export function dispose() {
+    URL.revokeObjectURL(videoUrl);
     DotNet.disposeJSObjectReference(this);
 };
 
