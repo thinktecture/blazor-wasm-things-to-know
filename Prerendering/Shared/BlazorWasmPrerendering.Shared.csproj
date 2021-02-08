@@ -5,8 +5,8 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="protobuf-net.Grpc" Version="1.0.140" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.0" />
+    <PackageReference Include="protobuf-net.Grpc" Version="1.0.147" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1" />
   </ItemGroup>
     
     

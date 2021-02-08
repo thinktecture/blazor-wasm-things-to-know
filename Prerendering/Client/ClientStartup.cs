@@ -4,7 +4,6 @@ using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
-using MudBlazor;
 using MudBlazor.Services;
 
 namespace BlazorWasmPrerendering.Client
@@ -29,9 +28,7 @@ namespace BlazorWasmPrerendering.Client
                 return channel;
             });
 
-            services.AddMudBlazorDialog();
-            services.AddMudBlazorSnackbar();
-            services.AddMudBlazorResizeListener();
+            services.AddMudServices();
         }
     }
 }
