@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MudBlazor;
 using MudBlazor.Services;
 
 namespace BlazorWasmVideo.Client
@@ -11,9 +10,7 @@ namespace BlazorWasmVideo.Client
             services.AddScoped<VideoServiceJSInterop>();
             services.AddScoped<VideoServiceUnmarshaledJSInterop>();
 
-            services.AddMudBlazorDialog();
-            services.AddMudBlazorSnackbar();
-            services.AddMudBlazorResizeListener();
+            services.AddMudServices();
         }
     }
 }
