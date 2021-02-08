@@ -19,7 +19,7 @@
     <tbody>
         <Virtualize Items="@_conferences" Context="conf">
             <ItemContent>
-                <tr>
+                <tr @key="@conf.ID">
                     <td>@conf.Title</td>
                 </tr>
             </ItemContent>
