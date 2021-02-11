@@ -5,38 +5,17 @@
 
 @inject VideoServiceUnmarshaledJSInterop _videoService
 
-<MudContainer Class="mt-16">
-    <MudButton Variant="Variant.Filled" Class="btn-file">
-        <InputFile OnChange="LoadFile" />Open File
-    </MudButton>
+<div>
+    <MudContainer Class="mt-16">
+        <MudButton Variant="Variant.Filled" Class="btn-file">
+            <InputFile OnChange="LoadFile" />Open File
+        </MudButton>
 
-    <p class="mt-8">
-        <video width="600" height="400" autoplay controls src="@_url" />
-    </p>
-</MudContainer>
-
-<style>
-    .btn-file {
-        position: relative;
-        overflow: hidden;
-    }
-
-        .btn-file input[type=file] {
-            position: absolute;
-            top: 0;
-            right: 0;
-            min-width: 100%;
-            min-height: 100%;
-            font-size: 100px;
-            text-align: right;
-            filter: alpha(opacity=0);
-            opacity: 0;
-            outline: none;
-            background: white;
-            cursor: inherit;
-            display: block;
-        }
-</style>
+        <p class="mt-8">
+            <video width="600" height="400" autoplay controls src="@_url" />
+        </p>
+        </MudContainer>
+</div>
 
 @code {
     private const int MAX_SIZE_IN_MB = 100;
