@@ -1,6 +1,5 @@
 ﻿@page "/jsinterop"
 
-@using System.Diagnostics 
 @using Microsoft.AspNetCore.Components.Forms
 
 @inject VideoServiceJSInterop _videoService
@@ -52,8 +51,6 @@
     {
         var file = args.GetMultipleFiles()[0];
 
-        Stopwatch sw = Stopwatch.StartNew();
-
         using var stream = file.OpenReadStream(1024 * 1024 * MAX_SIZE_IN_MB);
         var buffer = new byte[file.Size];
 
@@ -62,8 +59,5 @@
         _url = await _videoService.CreateURLFromBuffer(buffer, "tempFile.mp4", file.ContentType);
 
         StateHasChanged();
-
-        sw.Stop();
-        Console.WriteLine("### VideoJSInterop: {0}md", sw.ElapsedMilliseconds);
     }
 }

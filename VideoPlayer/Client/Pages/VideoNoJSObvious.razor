@@ -1,6 +1,5 @@
 ﻿@page "/"
 
-@using System.Diagnostics
 @using Microsoft.AspNetCore.Components.Forms
 
 <MudContainer Class="mt-16">
@@ -45,8 +44,6 @@
     {
         var file = args.GetMultipleFiles()[0];
 
-        var sw = Stopwatch.StartNew();
-
         using var stream = file.OpenReadStream(1024 * 1024 * MAX_SIZE_IN_MB);
         var buffer = new byte[file.Size];
 
@@ -55,8 +52,5 @@
         _url = $"data:{file.ContentType};base64,{Convert.ToBase64String(buffer)}";
 
         StateHasChanged();
-
-        sw.Stop();
-        Console.WriteLine("### VideoObvious: {0}ms", sw.ElapsedMilliseconds);
     }
 }

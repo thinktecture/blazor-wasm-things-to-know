@@ -1,4 +1,5 @@
-﻿window.videoServiceUnmarshaledReference = () => {
+﻿// Not yet really fully isolated in .NET 5.0
+window.videoServiceUnmarshaledReference = () => {
     var videoUrl;
 
     return {
