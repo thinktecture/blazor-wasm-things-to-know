@@ -13,5 +13,9 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Services\" />
   </ItemGroup>
 </Project>
