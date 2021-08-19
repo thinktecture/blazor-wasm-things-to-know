@@ -17,6 +17,8 @@
         </tr>
     </thead>
     <tbody>
+        <!-- virtualized approach ... -->
+       
         <Virtualize Items="@_conferences" Context="conf">
             <ItemContent>
                 <tr @key="@conf.ID">
